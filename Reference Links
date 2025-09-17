@@ -1,6 +1,11 @@
-Useful Reference Links
+##Useful Reference Links
 
+##OWASP IOT Goat using OpenWRT
 https://github.com/OWASP/IoTGoat
 
+##honeyd implementation
+https://theinfosecmastery.com/cybersecurity/how-to-build-a-honeyd-honeypot/
 
-
+##OpenWRT for Routers
+https://openwrt.org/docs/start
+https://betanet.net/view-post/how-to-build-openwrt-a-comprehensive-guide
