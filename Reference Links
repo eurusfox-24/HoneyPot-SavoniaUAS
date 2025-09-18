@@ -1,19 +1,25 @@
 ##Useful Reference Links
 
-##OWASP IOT Goat using OpenWRT
+##OWASP IOT Goat using OpenWRT (Our Main Reference)
 https://github.com/OWASP/IoTGoat
 
-##honeyd implementation
+##honeyd implementation (honeypot variant that runs on daemons)
 https://theinfosecmastery.com/cybersecurity/how-to-build-a-honeyd-honeypot/
 
 ##OpenWRT for Routers
 https://openwrt.org/docs/start
 https://betanet.net/view-post/how-to-build-openwrt-a-comprehensive-guide
 
-##Honeypot Alternatives
+##Articles on Honeypot
 https://www.blackhat.com/docs/us-17/thursday/us-17-Luo-Iotcandyjar-Towards-An-Intelligent-Interaction-Honeypot-For-IoT-Devices-wp.pdf
+
+##Honeypot Alternatives
 https://www.securityhive.io/blog/best-honeypot-solutions-in-2025
 
 
+#####TOOLS
+
+##Linux Fundamental Courses
+https://tryhackme.com/module/linux-fundamentals
 ##Aircrack-ng
 https://theinfosecmastery.com/cybersecurity/aircrack-ng-101-simple-guide-for-beginners/
