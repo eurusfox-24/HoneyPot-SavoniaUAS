@@ -1,0 +1,16 @@
+
+
+
+ipconfig wlan 0 up #bring interface up
+########
+cat > /etc/wpa_supplicant.conf <<EOF              #set up cofig file for wpa
+network={
+    ssid="Savonia_IoT"
+    psk="AsioidenVerkko5539"
+}
+EOF 
+#########
+wpa_supplicant -B -i wlan0 -c /tmp/wpa_supplicant.conf            #wpa_supplicant command to locate ssid&pass
+############
+echo"nameserver 8.8.8.8" > /etc/resolv.conf            #resets after everyboot (need to add again on every boot)
+#############
