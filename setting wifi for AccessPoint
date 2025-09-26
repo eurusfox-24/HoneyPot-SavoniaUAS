@@ -2,15 +2,40 @@
 
 
 ipconfig wlan 0 up #bring interface up
-########
+########################################
 cat > /etc/wpa_supplicant.conf <<EOF              #set up cofig file for wpa
 network={
     ssid="Savonia_IoT"
     psk="AsioidenVerkko5539"
 }
 EOF 
-#########
-wpa_supplicant -B -i wlan0 -c /tmp/wpa_supplicant.conf            #wpa_supplicant command to locate ssid&pass
-############
+#################################
+wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf            #wpa_supplicant command to locate ssid&pass
+###########################################
 echo"nameserver 8.8.8.8" > /etc/resolv.conf            #resets after everyboot (need to add again on every boot)
-#############
+#####################################
+udhcpc -i wlan0    #get Ip from wifi
+
+###########################################
+iw dev wlan0 interface add wlan0-ap type __ap
+ifconfig wlan0-ap 192.168.20.1 netmask 255.255.255.0 up     #setting virtual interface
+##################################
+cat > /etc/hostapd.conf <<EOF
+interface=wlan0-ap
+driver=nl80211
+ssid=Grp6AccessPoint
+hw_mode=g
+channel=6
+auth_algs=1
+wpa=2
+wpa_passphrase=WirelessPass
+wpa_key_mgmt=WPA-PSK
+rsn_pairwise=CCMP
+EOF
+##########################
+hostapd /etc/hostapd.conf &    #runs wireless ap
+############################
+
+
+
+
