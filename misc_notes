@@ -2,3 +2,11 @@
 
 
 https://github.com/OWASP/IoTGoat
+
+
+
+##wireless ap notes
+pgrep -a hostapd     #checking active processes
+kill <PID>  #Killing process
+
+  
