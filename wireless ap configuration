@@ -53,9 +53,9 @@ set wireless.default_radio0=wifi-iface
 set wireless.default_radio0.device='radio0'
 set wireless.default_radio0.mode='ap'
 set wireless.default_radio0.network='lan'
-set wireless.default_radio0.ssid='MyPi_AP'
+set wireless.default_radio0.ssid='IoT_HoneyPot_AP'
 set wireless.default_radio0.encryption='psk2'
-set wireless.default_radio0.key='MyStrongPassword'
+set wireless.default_radio0.key='iotgroup6'
 EOF
 
 uci commit wireless
