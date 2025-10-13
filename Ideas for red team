@@ -1,4 +1,4 @@
-Here you can see tools and ideas for getting access to the target machine, scanning port, networks, packages
+Here you can see tools and ideas for getting access to the target machine, scanning port, networks, packages, info gathering 
 
 
 1. whatweb IP-IP --aggression 3 -v --no-errors --log-verbose=results (scanning your network by internal IP using whatweb tool)
@@ -8,3 +8,5 @@ Here you can see tools and ideas for getting access to the target machine, scann
 3. reverseshell (hacking tool for getting remote access to the target machine)
 
 4 .ssh (tool for getting remote access to the target)
+
+5. gathering info tools (ping <IP or domain name>, nslookup <IP or domain name>)
