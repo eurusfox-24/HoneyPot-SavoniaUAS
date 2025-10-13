@@ -10,3 +10,5 @@ Here you can see tools and ideas for getting access to the target machine, scann
 4 .ssh (tool for getting remote access to the target)
 
 5. gathering info tools (ping <IP or domain name>, nslookup <IP or domain name>)
+
+6. arp -a utilizing this command you can check out all IPs of every device connected to your LAN 
