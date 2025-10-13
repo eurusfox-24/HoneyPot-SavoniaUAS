@@ -1,1 +1,10 @@
-whatweb IP-IP --aggression 3 -v --no-errors --log-verbose=results (scanning your network by internal IP using whatweb tool)
+Here you can see tools and ideas for getting access to the target machine, scanning port, networks, packages
+
+
+1. whatweb IP-IP --aggression 3 -v --no-errors --log-verbose=results (scanning your network by internal IP using whatweb tool)
+
+2. nmap <IP> (scanning all ports in the network using nmap tool)
+
+3. reverseshell (hacking tool for getting remote access to the target machine)
+
+4 .ssh (tool for getting remote access to the target)
