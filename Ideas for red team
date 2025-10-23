@@ -42,3 +42,6 @@ Here you can see tools and ideas for getting access to the target machine, scann
           
           else: 
               scan(targets, ports)
+
+
+8. Nessus, it is a local host for scanning vulnerabilities of the PC
