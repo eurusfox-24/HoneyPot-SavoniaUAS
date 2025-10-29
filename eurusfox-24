@@ -10,3 +10,5 @@ No2 => Fake virtual server =
 
 
 Ububtu Server => username = admin1, password = ubuntupass
+rocky Server => username = admin1, password = rockypassword
+             => root user => root, password = password
