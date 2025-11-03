@@ -1,17 +1,25 @@
-**CHECK LIST**
 
- ( ) setting up servers \n
- ( ) setting up IoT Honeypot 
- ( ) setting up and deployment of wireless ap using OpenWrt 
+# CHECK LIST — IoT Honeypot Project
 
- ( ) Server Deployment 
- ( ) Honeypot Deployent 
- ( ) Data logging and monitoring 
+## 🔧 Setup
+
+*  bash scripts   
+
+## 🚀 Deployment
+
+* private subnet
+* ftp server
+* honeypot
+* attacking machine
+* data logging and monitoring
+
+## 🛡️ Red Team / Attacker Scenarios
+
+* running bash scripts 
+
+---
 
 
-Red Teamers
- ( ) ssh from outside of network 
- ( ) working on scripts for wireless attack and password cracking 
 
 
 
