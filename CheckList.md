@@ -1,6 +1,6 @@
 **CHECK LIST**
 
- ( ) setting up servers /n
+ ( ) setting up servers \n
  ( ) setting up IoT Honeypot 
  ( ) setting up and deployment of wireless ap using OpenWrt 
 
