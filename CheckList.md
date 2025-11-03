@@ -15,7 +15,7 @@
 
 ## 🛡️ Red Team / Attacker Scenarios
 
-- [] running bash scripts 
+- [ ] running bash scripts 
 
 ---
 
