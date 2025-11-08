@@ -47,3 +47,5 @@ Here you can see tools and ideas for getting access to the target machine, scann
 8. Nessus, it is a local host for scanning vulnerabilities of the PC
 
 9. checking open ports; sudo ss -tulwnp (for linux), netstat -ano | findstr /i ":80" (for Wondows)
+
+10. hydra -L users.txt -P passwords.txt ssh://127.0.0.1 -t 4 -f -V   We need to use hydra for getting login and password for telnet
