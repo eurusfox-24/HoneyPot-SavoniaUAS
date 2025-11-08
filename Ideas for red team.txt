@@ -45,3 +45,5 @@ Here you can see tools and ideas for getting access to the target machine, scann
 
 
 8. Nessus, it is a local host for scanning vulnerabilities of the PC
+
+9. checking open ports; sudo ss -tulwnp (for linux), netstat -ano | findstr /i ":80" (for Wondows)
