@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About — NordEdge Technologies</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <div class="logo" aria-hidden>NE</div>
+        <div>
+          <div style="font-weight:700">NordEdge Technologies</div>
+          <div style="font-size:0.85rem;color:var(--muted)">Edge IoT · Secure Connectivity</div>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="left">
+          <h1>About NordEdge Technologies</h1>
+          <p class="small">NordEdge provides secure, scalable edge IoT solutions for smart buildings, utilities, and industrial automation.</p>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h3>Our Mission</h3>
+          <p class="small">To empower organizations with secure, real-time data processing at the edge, reducing latency and protecting privacy.</p>
+        </article>
+        <article class="card">
+          <h3>Our Vision</h3>
+          <p class="small">Be the leading provider of edge-first IoT technologies trusted by enterprises worldwide.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      © <span id="year"></span> NordEdge Technologies — demo site
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

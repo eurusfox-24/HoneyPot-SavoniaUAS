@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin — ArcticEdge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="index.html"><div class="logo">AE</div><div>
+        <div style="font-weight:800">ArcticEdge Systems</div>
+        <div class="small">Admin (demo)</div>
+      </div></a>
+      <nav class="nav"><a href="index.html">Home</a><a href="contact.html">Contact</a></nav>
+    </header>
+
+    <main>
+      <div id="loginView" class="card login-box">
+        <h3 style="margin:0">Admin sign in</h3>
+        <p class="small" style="margin-top:8px">Demo portal — credentials are not transmitted anywhere.</p>
+        <div style="margin-top:12px" class="form">
+          <input id="u" placeholder="Username" autocomplete="off">
+          <input id="p" placeholder="Password" type="password" autocomplete="off">
+          <button id="signin">Sign in</button>
+        </div>
+      </div>
+
+      <div id="dashView" style="display:none">
+        <div class="row">
+          <div class="col card">
+            <div class="kv"><div><strong>System overview</strong><div class="small">Last 24h</div></div><div><strong id="upt">Uptime: —</strong></div></div>
+            <div style="margin-top:12px" class="row">
+              <div class="col card">
+                <div class="small">Avg Temp</div><div style="font-weight:700">23.6 °C</div>
+              </div>
+              <div class="col card">
+                <div class="small">Active Nodes</div><div style="font-weight:700">14</div>
+              </div>
+            </div>
+            <div style="margin-top:12px">
+              <div class="small">Event log</div>
+              <div id="log" class="log">Boot at 2025-11-13T10:02:45Z\n</div>
+            </div>
+          </div>
+
+          <div style="width:380px" class="card">
+            <div class="small">Realtime sensor</div>
+            <canvas id="dashChart" width="340" height="140" style="width:100%;height:140px;border-radius:8px"></canvas>
+            <div style="margin-top:10px" class="small">API: <code>/api/status.json</code></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">Demo admin interface — no backend</footer>
+  </div>
+
+<script>
+document.getElementById('signin').addEventListener('click', ()=>{
+  document.getElementById('loginView').style.display='none';
+  document.getElementById('dashView').style.display='block';
+  document.getElementById('upt').textContent = 'Uptime: 3d 4h';
+  addLog('User signed in (demo)');
+  startDash();
+});
+
+function addLog(msg){
+  const el = document.getElementById('log');
+  const t = new Date().toISOString();
+  el.textContent = t + ' — ' + msg + '\\n' + el.textContent;
+}
+
+function startDash(){
+  const c = document.getElementById('dashChart');
+  const ctx = c.getContext('2d');
+  let arr = Array.from({length:40},()=>22+Math.random()*2);
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    ctx.fillStyle='rgba(255,255,255,0.02)'; ctx.fillRect(0,0,c.width,c.height);
+    ctx.beginPath(); ctx.strokeStyle='#2dd4bf'; ctx.lineWidth=2;
+    const step = c.width/(arr.length-1);
+    for(let i=0;i<arr.length;i++){
+      const x = i*step;
+      const y = c.height - ((arr[i]-18)/12)*c.height;
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+  }
+  setInterval(()=>{
+    arr.shift();
+    arr.push(arr[arr.length-1] + (Math.random()-0.45)*0.6);
+    draw();
+  },1500);
+  draw();
+  setInterval(()=> addLog('Heartbeat'), 5000);
+}
+</script>
+</body>
+</html>

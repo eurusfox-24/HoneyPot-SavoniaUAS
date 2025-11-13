@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ArcticEdge Systems — Edge IoT Platforms</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="index.html"><div class="logo">AE</div>
+        <div>
+          <div style="font-weight:800">ArcticEdge Systems</div>
+          <div class="small">Trusted Edge · Private-by-design</div>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="left">
+        <h1>Enterprise-grade edge gateways that keep data local</h1>
+        <p class="lead">Secure, low-power hardware with on-device analytics. Ideal for smart buildings, utilities, and industrial deployments.</p>
+        <a class="cta" href="products.html">Explore products →</a>
+
+        <div class="metrics">
+          <div class="metric card">
+            <div class="small">Devices online</div>
+            <div style="font-weight:800;font-size:1.2rem">14</div>
+          </div>
+          <div class="metric card">
+            <div class="small">Avg latency</div>
+            <div style="font-weight:800;font-size:1.2rem">28 ms</div>
+          </div>
+          <div class="metric card">
+            <div class="small">Active sensors</div>
+            <div style="font-weight:800;font-size:1.2rem">72</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width:380px">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">Live sensor feed</div>
+              <div class="small">Temperature (°C) · updated every 2s</div>
+            </div>
+            <div class="small" id="feedTime">—</div>
+          </div>
+          <canvas id="miniChart" width="340" height="120" style="margin-top:10px;width:100%;height:120px;border-radius:8px"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <div class="content">
+        <div class="card">
+          <h3 style="margin-top:0">Why ArcticEdge</h3>
+          <p class="small">On-prem analytics lower bandwidth and improve privacy. Hardened Linux base, secure boot, and OTA updates.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0">Recent news</h3>
+          <ul class="small">
+            <li>2025-11-11 — Pilot deployment in Espoo with 50 gateways</li>
+            <li>2025-10-30 — New scheduler reduces power draw by 12%</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0">Featured products</h3>
+          <div class="products" style="margin-top:10px">
+            <div class="product"><div class="thumb">G</div><div><div style="font-weight:700">Gateway X</div><div class="small">Edge compute, LTE backup</div></div></div>
+            <div class="product"><div class="thumb">S</div><div><div style="font-weight:700">Sensor S</div><div class="small">Battery-powered environmental sensor</div></div></div>
+            <div class="product"><div class="thumb">M</div><div><div style="font-weight:700">Manager</div><div class="small">On-prem management console</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h4 style="margin:0">API status</h4>
+          <pre id="apiStatus" class="small" style="margin-top:8px">loading…</pre>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h4 style="margin:0">Quick links</h4>
+          <div style="margin-top:8px" class="small">
+            <div><a href="admin.html">Admin portal</a></div>
+            <div><a href="api/status.json">/api/status.json</a></div>
+            <div><a href="api/sensors.json">/api/sensors.json</a></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="footer">© <span id="yr"></span> ArcticEdge Systems — demo site</footer>
+  </div>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// simple live chart
+const canvas = document.getElementById('miniChart');
+const ctx = canvas.getContext('2d');
+let data = Array.from({length:40},()=>22+Math.random()*2);
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  // background grid
+  ctx.fillStyle = 'rgba(255,255,255,0.02)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  // line
+  ctx.beginPath();
+  const step = canvas.width/(data.length-1);
+  ctx.strokeStyle = '#2dd4bf';
+  ctx.lineWidth = 2;
+  for(let i=0;i<data.length;i++){
+    const x = i*step;
+    const y = canvas.height - ((data[i]-20)/6)*canvas.height;
+    if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  }
+  ctx.stroke();
+  // last value
+  ctx.fillStyle = '#e6eef6';
+  ctx.font = '600 14px Inter, Arial';
+  ctx.fillText(data[data.length-1].toFixed(1) + ' °C', 8, 18);
+}
+function tick(){
+  data.shift();
+  const last = data[data.length-1];
+  const next = last + (Math.random()-0.45)*0.4;
+  data.push(Math.max(18, Math.min(30, next)));
+  draw();
+  document.getElementById('feedTime').textContent = new Date().toLocaleTimeString();
+}
+tick(); setInterval(tick, 2000);
+
+// fetch API status (from local file when hosted)
+function fetchStatus(){
+  fetch('api/status.json').then(r=>r.json()).then(j=>{
+    document.getElementById('apiStatus').textContent = JSON.stringify(j, null, 2);
+  }).catch(e=>{
+    document.getElementById('apiStatus').textContent = 'unavailable';
+  });
+}
+fetchStatus();
+</script>
+</body>
+</html>
