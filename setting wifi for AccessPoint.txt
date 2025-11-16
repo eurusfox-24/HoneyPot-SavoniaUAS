@@ -1,5 +1,5 @@
 
-
+"""
 
 ipconfig wlan 0 up #bring interface up
 ########################################
@@ -36,6 +36,6 @@ EOF
 hostapd /etc/hostapd.conf &    #runs wireless ap
 ############################
 
-
+"""
 
 
