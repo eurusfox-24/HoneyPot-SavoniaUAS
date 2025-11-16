@@ -1,3 +1,4 @@
+/*
 #!/bin/bash
 
 # This script configures Raspberry Pi 5 running OpenWrt as a Wi-Fi AP
@@ -95,3 +96,5 @@ echo "[+] Setup complete!"
 echo "    Connect to Wi-Fi SSID: MyPi_AP"
 echo "    Password: MyStrongPassword"
 echo "    NAT enabled: school only sees the Pi, not your devices."
+
+*/
