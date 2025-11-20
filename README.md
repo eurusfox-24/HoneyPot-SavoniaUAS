@@ -1,1 +1,93 @@
-🔒 Isolated Network Security Lab: Raspberry Pi 5 Honeypot and Penetration TestThis repository serves as the centralized storage for configuration files, custom scripts, and essential reference materials used in our isolated network security lab built on Raspberry Pi 5 devices.⚠️ NOTE: The files within this repository cannot be cloned to instantly replicate the full physical hardware setup. This repo is intended to store digital assets required for running the lab environment, such as custom Python scripts, web server files, and configuration instructions.🎯 Project Overview: Honeypot SimulationThe goal of this project is to simulate a small, isolated network environment to observe and log basic penetration testing activities against a controlled honeypot system. The entire setup utilizes four dedicated Raspberry Pi 5 devices running specialized operating systems to create a realistic, contained security testing ground for educational and ethical purposes only.🏗️ Network Architecture SummaryThe lab is a completely isolated, offline wireless subnet ensuring all testing activities are segregated from the main network.<!-- Network Topology Diagram Placeholder -->DeviceOperating SystemPrimary RoleHacking MachineParrot OS (or Kali/Raspbian)Execution of penetration testing tools and scripts.Honeypot SystemHoneyPiPassive monitoring, logging, and intrusion detection.Network RouterOpenWrtProviding an isolated, offline wireless subnet for the lab devices.Web ServerNGINX on Raspberry Pi OSReference model for a typical network service (not actively interacted with).🛠️ Components and Activities1. The Isolated Subnet (OpenWrt Router)The Raspberry Pi 5 running OpenWrt is configured to create an entirely self-contained, offline wireless network. This configuration is critical for security, ensuring that all testing activities are segregated and cannot unintentionally affect external resources or services.2. The Attacker (Parrot OS Machine)The Hacking Machine is responsible for executing simulated attack activities against the Honeypot System ($\text{HoneyPi}$):Port Scanning: Utilizing a custom Python script (available in this repo) to scan for open ports on the HoneyPi device.Telnet Brute Force: Using the powerful Hydra tool to attempt to brute-force the Telnet login service on the honeypot.3. The Target (HoneyPi Honeypot)The HoneyPi system is configured to simulate and detect specific network vulnerabilities. The core objective is to develop a low-interaction honeypot to capture and analyze real simulated attack traffic.Vulnerability TypeStatus in LabDescriptionPort ScanningACTIVELogs all scanning attempts directed at the device's ports.TelnetACTIVEDetects and logs connection and brute-force attempts on the Telnet service (Port 23).FTPINACTIVEVulnerability supported by the honeypot, but not actively tested in this phase.VNC ConnectionINACTIVEVulnerability supported by the honeypot, but not actively tested in this phase.4. Logging & ReportingThe critical function of the HoneyPi is its logging system, which provides instant documentation of simulated attacks:Real-time Logging: All detected port scanning and Telnet brute-force attempts are logged.Email Notification: The honeypot is configured to automatically parse the logs and send an output summary via email to a dedicated account, providing instant, offline documentation of the simulated attack traffic.5. Reference Web Server (NGINX)A separate Raspberry Pi 5 runs a static web server powered by NGINX. This hosts an imaginary static website and serves purely as a realistic reference model within the isolated network but is not actively interacted with during the penetration testing exercises.📦 Portability and EnclosureFor enhanced portability, all four Raspberry Pi 5 devices are housed in a small, custom-designed 3D printed enclosure, making the entire lab easy to transport for demonstrations and educational showcases.
+# 🔒 Isolated Network Security Lab  
+### Raspberry Pi 5 Honeypot & Penetration Testing Environment
+
+This repository stores all **configuration files, custom scripts, and reference materials** used in an isolated network security lab built entirely on Raspberry Pi 5 devices.
+
+> ⚠️ **Note:**  
+> The files in this repo **cannot** be cloned to instantly reproduce the full physical setup. This repository contains only the *digital* assets required for the environment (scripts, configs, docs).
+
+---
+
+## 🎯 Project Overview: Honeypot Simulation
+
+The goal of this project is to simulate a contained, offline network environment for observing and logging penetration-testing activities against a controlled honeypot system. All activities are performed on **four isolated Raspberry Pi 5 devices**, each with a specialized role.
+
+This environment is for **educational and ethical use only**.
+
+---
+
+## 🏗️ Network Architecture Summary
+
+The network operates as a **fully isolated wireless subnet**, disconnected from the internet to ensure absolute containment of all testing activities.
+
+<!-- Network Topology Diagram Placeholder -->
+
+### Device Roles
+
+| Device | Operating System | Role |
+|--------|------------------|------|
+| **Hacking Machine** | Parrot OS (or Kali/Raspbian) | Runs penetration testing tools and scripts. |
+| **Honeypot System (HoneyPi)** | HoneyPi | Passive monitoring, logging, and intrusion detection. |
+| **Network Router** | OpenWrt | Creates an isolated offline wireless subnet. |
+| **Web Server** | NGINX on Raspberry Pi OS | Static reference web server (not targeted). |
+
+---
+
+## 🛠️ Key Components & Activities
+
+### 1. **Isolated Subnet (OpenWrt Router)**  
+A Raspberry Pi 5 running OpenWrt creates a **self-contained, offline Wi-Fi network**.  
+This ensures that testing cannot leak into external networks or devices.
+
+---
+
+### 2. **Attacker Machine (Parrot OS)**  
+Used to simulate controlled attacks on the honeypot:
+
+#### 🔍 Port Scanning  
+A custom Python script (included in this repo) scans the HoneyPi's open ports.
+
+#### 🔐 Telnet Brute Force  
+Hydra is used to attempt Telnet login brute-force attacks on port 23.
+
+---
+
+### 3. **Target System — HoneyPi Honeypot**  
+HoneyPi simulates low-interaction vulnerabilities and logs attacker behavior.
+
+#### Vulnerability Status Table
+
+| Vulnerability | Status | Description |
+|---------------|--------|-------------|
+| **Port Scanning** | ACTIVE | Logs all port scan attempts. |
+| **Telnet** | ACTIVE | Detects and logs Telnet brute-force attempts. |
+| **FTP** | INACTIVE | Supported, but not tested in this phase. |
+| **VNC** | INACTIVE | Supported, but not tested in this phase. |
+
+---
+
+### 4. **Logging & Reporting System**
+
+HoneyPi provides immediate documentation of attack activity:
+
+- 📜 **Real-time Logging:**  
+  Every port scan and Telnet attempt is captured.
+
+- ✉️ **Email Notification System:**  
+  Logs are parsed, summarized, and automatically emailed to a dedicated inbox for offline evidence collection.
+
+---
+
+### 5. **Reference Web Server (NGINX)**
+
+A separate Raspberry Pi 5 hosts a simple static website via NGINX.  
+This device serves only as a realistic model in the network and is **not targeted** during tests.
+
+---
+
+## 📦 Portability & Enclosure
+
+All four Raspberry Pi 5 devices are mounted inside a **custom 3D-printed enclosure**, making the entire lab portable for demonstrations and educational workshops.
+
+---
+
