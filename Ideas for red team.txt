@@ -13,7 +13,7 @@ Here you can see tools and ideas for getting access to the target machine, scann
 
 6. arp -a utilizing this command you can check out all IPs of every device connected to your LAN 
 
-7. A python code written by me for port scanning by IP addresses (super easy in use)
+7. A python code written by me for port scanning by IP addresses (super easy in use)        python3 portscanner.py
           import socket
           
           
