@@ -1,0 +1,7 @@
+
+                  username       /password
+HoneyPot No2  => group6honey     /group6  192.168.1.123
+Nginx    No12 => team6webserver  /group6  192.168.1.10
+Openwrt  No3  => root            /group6  192.168.1.1
+Parrot   No11 => pi              /group6  192.168.1.77
+
